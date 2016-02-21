@@ -30,7 +30,7 @@ module UsbIds
         end
       end
 
-      result = @handle.execute("SELECT * from VENDORS WHERE #{where_clause.join(" and ")} LIMIT 1;").first
+      result = @handle.execute("SELECT * FROM vendors WHERE #{where_clause.join(" AND ")} LIMIT 1;").first
 
       return result || Hash.new(nil)
     end
@@ -65,6 +65,7 @@ module UsbIds
         end
       end
 
+      @handle.execute("SELECT * from devices WHERE #{where_clause.join(" and ")}")
     end
 
     def set_update etag

@@ -53,10 +53,17 @@ describe UsbIds do
         UsbIds.setup
 
         db = UsbIds.db
+
         db.add_vendor 3, "test vendor"
-
         db.add_device 3, 10, "test device"
+        db.add_device 3, 11, "test device2"
 
+        devices = db.get_device :code => 10
+        assert_equal 1, devices.size, "should get only one device"
+        assert_equal "test device", devices.first['name']
+
+        devices = db.get_device :vendor_name => "test vendor"
+        assert_equal 2, devices.size, "should get all devices for vendor"
       end
     end
   end
