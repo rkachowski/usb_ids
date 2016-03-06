@@ -62,14 +62,14 @@ describe UsbIds do
         db.add_device 4, 9, "test device v2"
         db.add_device 4, 11, "test device2 v2"
 
-        devices = db.get_device :code => 10
+        devices = db.get_devices :code => 10
         assert_equal 1, devices.size, "should get only one device"
         assert_equal "test device", devices.first['name']
 
-        devices = db.get_device :vendor_name => "test vendor"
+        devices = db.get_devices :vendor_name => "test vendor"
         assert_equal 2, devices.size, "should get all devices for vendor"
 
-        devices = db.get_device :code => 11
+        devices = db.get_devices :code => 11
         assert_equal 2, devices.size, "should get devices with same codes from different vendors"
 
       end
@@ -85,6 +85,25 @@ describe UsbIds do
     assert_equal "03ed", result.last[:code]
   end
 
+  it "populates a db correctly from a source file" do
+    file_path = File.expand_path(File.join(File.dirname(__FILE__),"ids_test.txt"))
+
+    Dir.mktmpdir do |dir|
+      Dir.chdir(dir) do
+        UsbIds.setup
+
+        db = UsbIds.db
+
+        db.from_file file_path
+        vendor = db.get_vendor code: "0386"
+
+        assert_equal "LTS", vendor['name']
+
+        devices = db.get_devices code: "7800"
+        assert_equal "Mini Album", devices.first['name']
+      end
+    end
+  end
 
 end
 

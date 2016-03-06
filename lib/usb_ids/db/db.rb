@@ -12,7 +12,7 @@ module UsbIds
     end
 
     def add_vendor code, name
-      @handle.execute "INSERT INTO vendors (code,name) values (#{hex_or_int(code)}, '#{name}');"
+      @handle.execute "INSERT INTO vendors (code,name) values (#{hex_or_int(code)}, ?);", name
     end
 
     def get_vendor option
@@ -42,7 +42,10 @@ module UsbIds
       @handle.execute "INSERT INTO devices (vendor_id, code, name) values (#{vendor_id['id']}, #{hex_or_int(code)}, '#{name}');"
     end
 
-    def get_device option
+    # Get a device for a variety of options
+    # option is a hash containing any of the following values
+    # 'vendor_name', 'vendor_code', 'code', 'name'
+    def get_devices option
       where_clause = []
 
       option.each do |key, value|
@@ -65,11 +68,21 @@ module UsbIds
         end
       end
 
-      @handle.execute("SELECT * from devices WHERE #{where_clause.join(" and ")}")
+     @handle.execute "SELECT * from devices WHERE #{where_clause.join(" and ")}"
     end
 
-    def set_update etag
+    def from_file path
+      usb_info = parse_usb_ids path
 
+      usb_info.each do |vendor|
+        vendor_code = vendor[:code]
+
+        add_vendor(vendor_code, vendor[:name])
+
+        vendor[:devices].each do |device|
+          add_device(vendor_code, device[:code],device[:name])
+        end
+      end
     end
 
     @@schema = '
