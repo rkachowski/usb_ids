@@ -58,14 +58,31 @@ describe UsbIds do
         db.add_device 3, 10, "test device"
         db.add_device 3, 11, "test device2"
 
+        db.add_vendor 4, "test vendor 2"
+        db.add_device 4, 9, "test device v2"
+        db.add_device 4, 11, "test device2 v2"
+
         devices = db.get_device :code => 10
         assert_equal 1, devices.size, "should get only one device"
         assert_equal "test device", devices.first['name']
 
         devices = db.get_device :vendor_name => "test vendor"
         assert_equal 2, devices.size, "should get all devices for vendor"
+
+        devices = db.get_device :code => 11
+        assert_equal 2, devices.size, "should get devices with same codes from different vendors"
+
       end
     end
+  end
+
+  it "parses source file correctly" do
+    file_path = File.expand_path(File.join(File.dirname(__FILE__),"ids_test.txt"))
+    test_object = Object.new
+    test_object.extend(UsbIds::Util)
+    result = test_object.parse_usb_ids file_path
+
+    assert_equal "03ed", result.last[:code]
   end
 
 

@@ -1,0 +1,127 @@
+0001  Fry's Electronics
+	7778  Counterfeit flash drive [Kingston]
+0002  Ingram
+0003  Club Mac
+0004  Nebraska Furniture Mart
+0011  Unknown
+	7788  counterfeit flash drive
+0053  Planex
+	5301  GW-US54ZGL 802.11bg
+0079  DragonRise Inc.
+	0006  PC TWIN SHOCK Gamepad
+	0011  Gamepad
+0105  Trust International B.V.
+	145f  NW-3100 802.11b/g 54Mbps Wireless Network Adapter [zd1211]
+0127  IBP
+	0002  HDM Interface
+0145  Unknown
+	0112  Card Reader
+017c  MLK
+	145f  Trust Deskset
+0200  TP-Link
+	0201  MA180 UMTS Modem
+0204  Chipsbank Microelectronics Co., Ltd
+	6025  CBM2080 / CBM2090 Flash drive controller
+	6026  CBM1180 Flash drive controller
+0218  Hangzhou Worlde
+	0301  MIDI Port
+02ad  HUMAX Co., Ltd.
+	138c  PVR Mass Storage
+0300  MM300 eBook Reader
+0324  OCZ Technology Inc
+	bc06  OCZ ATV USB 2.0 Flash Drive
+	bc08  OCZ Rally2/ATV USB 2.0 Flash Drive
+0325  OCZ Technology Inc
+	ac02  ATV Turbo / Rally2 Dual Channel USB 2.0 Flash Drive
+0386  LTS
+	0001  PSX for USB Converter
+03d9  Shenzhen Sinote Tech-Electron Co., Ltd
+	0499  SE340D PC Remote Control
+03da  Bernd Walter Computer Technology
+	0002  HD44780 LCD interface
+03e8  EndPoints, Inc.
+	0004  SE401 Webcam
+	0008  101 Ethernet [klsi]
+	0015  ATAPI Enclosure
+	2123  SiPix StyleCam Deluxe
+	8004  Aox 99001
+03e9  Thesys Microelectronics
+03ea  Data Broadcasting Corp.
+03eb  Atmel Corp.
+	0902  4-Port Hub
+	2002  Mass Storage Device
+	2015  at90usbkey sample firmware (HID keyboard)
+	2018  at90usbkey sample firmware (CDC ACM)
+	2019  stk525 sample firmware (microphone)
+	201c  at90usbkey sample firmware (HID mouse)
+	201d  at90usbkey sample firmware (HID generic)
+	2022  at90usbkey sample firmware (composite device)
+	2040  LUFA Test PID
+	2041  LUFA Mouse Demo Application
+	2042  LUFA Keyboard Demo Application
+	2043  LUFA Joystick Demo Application
+	2044  LUFA CDC Demo Application
+	2045  LUFA Mass Storage Demo Application
+	2046  LUFA Audio Output Demo Application
+	2047  LUFA Audio Input Demo Application
+	2048  LUFA MIDI Demo Application
+	2049  Stripe Snoop Magnetic Stripe Reader
+	204a  LUFA CDC Class Bootloader
+	204b  LUFA USB to Serial Adapter Project
+	204c  LUFA RNDIS Demo Application
+	204d  LUFA Combined Mouse and Keyboard Demo Application
+	204e  LUFA Dual CDC Demo Application
+	204f  LUFA Generic HID Demo Application
+	2060  Benito Programmer Project
+	2061  LUFA Combined Mass Storage and Keyboard Demo Application
+	2062  LUFA Combined CDC and Mouse Demo Application
+	2063  LUFA Datalogger Device
+	2064  Interfaceless Control-Only LUFA Devices
+	2065  LUFA Test and Measurement Demo Application
+	2066  LUFA Multiple Report HID Demo
+	2068  LUFA Virtual Serial/Mass Storage Demo
+	2069  LUFA Webserver Project
+	2103  JTAG ICE mkII
+	2104  AVR ISP mkII
+	2105  AVRONE!
+	2106  STK600 development board
+	2107  AVR Dragon
+	2109  STK541 ZigBee Development Board
+	210d  XPLAIN evaluation kit (CDC ACM)
+	2110  AVR JTAGICE3 Debugger and Programmer
+	2122  XMEGA-A1 Explained evaluation kit
+	2141  ICE debugger
+	2310  EVK11xx evaluation board
+	2fe4  ATxmega32A4U DFU bootloader
+	2fe6  Cactus V6 (DFU)
+	2fea  Cactus RF60 (DFU)
+	2ff0  atmega32u2 DFU bootloader
+	2ff4  atmega32u4 DFU bootloader
+	2ffa  at90usb162 DFU bootloader
+	2ffb  at90usb AVR DFU bootloader
+	2ffd  at89c5130/c5131 DFU bootloader
+	2fff  at89c5132/c51snd1c DFU bootloader
+	3301  at43301 4-Port Hub
+	3312  4-Port Hub
+	4102  AirVast W-Buddie WN210
+	5601  at76c510 Prism-II 802.11b Access Point
+	5603  Cisco 7920 WiFi IP Phone
+	6119  AT91SAM CDC Demo Application
+	6124  at91sam SAMBA bootloader
+	6127  AT91SAM HID Keyboard Demo Application
+	6129  AT91SAM Mass Storage Demo Application
+	6200  AT91SAM HID Mouse Demo Application
+	7603  D-Link DWL-120 802.11b Wireless Adapter [Atmel at76c503a]
+	7604  at76c503a 802.11b Adapter
+	7605  at76c503a 802.11b Adapter
+	7606  at76c505 802.11b Adapter
+	7611  at76c510 rfmd2948 802.11b Access Point
+	7613  WL-1130 USB
+	7614  AT76c505a Wireless Adapter
+	7615  AT76C505AMX Wireless Adapter
+	7617  AT76C505AS Wireless Adapter
+	7800  Mini Album
+	ff07  Tux Droid fish dongle
+03ec  Iwatsu America, Inc.
+03ed  Mitel Corp.
+
