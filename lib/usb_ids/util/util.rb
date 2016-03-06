@@ -21,21 +21,19 @@ module UsbIds
       usb_info = []
 
       contents.each_line do |line|
-        next if line.length < 2 or line.chars.first == "#"
+        next unless line.match(/^\s*[0-9a-fA-F]{4}/)
 
         case
-          when line.chars[0..1] == %W(\t \t)
+          when line.match(/^\t\t/)
             #interface
-          when line.chars.first == "\t"
+          when line.match(/^\t/)
             #device
             usb_info.last[:devices] << get_name_and_code_from_line(line)
-          when line.split.first.match(/[0-9a-fA-F]{4}/)
+          else
             #vendor
             details = get_name_and_code_from_line line
             details[:devices] = []
             usb_info << details
-          else
-            puts "wtf is '#{line}'"
         end
       end
 

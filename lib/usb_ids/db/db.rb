@@ -13,8 +13,11 @@ module UsbIds
 
     def add_vendor code, name
       @handle.execute "INSERT INTO vendors (code,name) values (#{hex_or_int(code)}, ?);", name
+      @handle.last_insert_row_id
     end
 
+    # get a vendor by options
+    # options are either code => hex string or int literal, name => vendor name as string
     def get_vendor option
       where_clause = []
 
@@ -39,7 +42,7 @@ module UsbIds
       vendor_id = @handle.execute("SELECT id from vendors where code = #{hex_or_int(vendor_code)};").first
       raise "Vendor id not found in db for vendor code #{vendor_code}" unless vendor_id['id']
 
-      @handle.execute "INSERT INTO devices (vendor_id, code, name) values (#{vendor_id['id']}, #{hex_or_int(code)}, '#{name}');"
+      @handle.execute "INSERT INTO devices (vendor_id, code, name) values (#{vendor_id['id']}, ?, ?);", hex_or_int(code), name
     end
 
     # Get a device for a variety of options
@@ -68,7 +71,7 @@ module UsbIds
         end
       end
 
-     @handle.execute "SELECT * from devices WHERE #{where_clause.join(" and ")}"
+      @handle.execute "SELECT * from devices WHERE #{where_clause.join(" and ")}"
     end
 
     def from_file path
@@ -76,14 +79,26 @@ module UsbIds
 
       usb_info.each do |vendor|
         vendor_code = vendor[:code]
+        vendor_id = add_vendor(vendor_code, vendor[:name])
 
-        add_vendor(vendor_code, vendor[:name])
+        next if vendor[:devices].length < 1
 
-        vendor[:devices].each do |device|
-          add_device(vendor_code, device[:code],device[:name])
+        vendor[:devices].each_slice(495) do |slice|
+
+
+          cmd = "INSERT INTO devices (vendor_id, code, name) VALUES "
+          binds = []
+          slice.length.times { binds << "(?, ?, ?)" }
+          cmd << binds.join(",")
+          args = slice.inject([]) { |arr, d| arr.push(vendor_id, hex_or_int(d[:code]), d[:name]); arr }
+
+          @handle.execute_batch cmd, args
         end
       end
     end
+
+    private
+
 
     @@schema = '
 CREATE TABLE IF NOT EXISTS vendors  (

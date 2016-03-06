@@ -100,7 +100,20 @@ describe UsbIds do
         assert_equal "LTS", vendor['name']
 
         devices = db.get_devices code: "7800"
+        assert_equal 1, devices.length, "should find one device with id 7800"
         assert_equal "Mini Album", devices.first['name']
+      end
+    end
+  end
+
+  it "should create an external db correctly" do
+    Dir.mktmpdir do |dir|
+      Dir.chdir(dir) do
+        UsbIds.create File.join(dir,"usb_test.db")
+
+        assert File.exists?(File.join(dir,"usb_test.db")), "sqlite db should exist at location"
+
+
       end
     end
   end
